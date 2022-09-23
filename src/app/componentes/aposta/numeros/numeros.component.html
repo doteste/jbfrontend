@@ -1,0 +1,109 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+  <mat-card fxShow="true" fxHide.lt-mdfxShow="true" fxHide.lt-md>
+    <mat-card-title>Informe seu palpite</mat-card-title>
+    <br>
+    <mat-card-subtitle>Extração: {{dsExtracao}}</mat-card-subtitle>
+    <mat-card-subtitle>Modalidade: {{dsTipo}} </mat-card-subtitle>
+  </mat-card>
+  <mat-card fxShow="true" fxHide.gt-sm>
+    <div fxLayout="row wrap" fxLayoutAlign="start center">
+      <span>
+        <a mat-icon-button (click)="voltar()">
+          <mat-icon>arrow_back_ios</mat-icon>
+        </a>
+      </span>
+      <span>
+        <a>Informe seu palpite</a>
+      </span>
+      <span class="spacer"></span>
+      <a mat-icon-button (click)="proximo()">
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </a>
+    </div>
+  </mat-card>
+
+  <span fxShow="true" fxHide.gt-sm class="bilhete">
+    <div class="label-bilhete">
+      <p>
+        Extração: {{dsExtracao}}
+        <br>
+        Modalidade: {{dsTipo}}
+      </p>
+    </div>
+  </span>
+
+  <div fxLayout="row" fxShow="true" fxHide.lt-md>
+    <button mat-stroked-button (click)="cancel()">
+      Cancelar
+    </button>
+    <button mat-stroked-button (click)="voltar()" class="button-2">
+      Voltar
+    </button>
+    <span class="spacer"></span>
+    <button mat-stroked-button class="button-1" (click)="proximo()">
+      Próximo
+    </button>
+  </div>
+
+  <div style="padding: 3% 1% 0% 3%;">
+    <a class="texto">Digite quantos palpites desejar</a>
+    <br>
+    <mat-form-field>
+      <mat-label>Palpite</mat-label>
+      <input matInput placeholder="Palpite" #numeroInput [formControl]="numerosCtrl" [(ngModel)]="numero"
+        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (input)="add($event)"
+        maxlength="{{maxlenght}}"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+    </mat-form-field>
+    <span>
+      <a mat-icon-button (click)="addPalpite()">
+        <mat-icon>check_circle</mat-icon>
+      </a>
+    </span>
+    <br>
+    <a class="texto" [hidden]="isGrupo()">Ou insira palpites sequenciais, informando o palpite inicial e final</a>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="start end">
+      <div [hidden]="isGrupo()">
+        <mat-form-field>
+          <mat-label>De</mat-label>
+          <input matInput placeholder="De" [formControl]="numerosCtrl" [(ngModel)]="numInicial"
+            maxlength="{{maxlenght}}"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+        </mat-form-field>
+      </div>
+
+      <div style="margin-left: 15px;" [hidden]="isGrupo()">
+        <mat-form-field>
+          <mat-label>Até</mat-label>
+          <input matInput placeholder="Até" #numeroInput [formControl]="numerosCtrl" [(ngModel)]="numFinal"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (input)="addIntervalo($event)" maxlength="{{maxlenght}}"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+    <div [hidden]="!isVisible()" style="margin-right: 2%;">
+      <mat-form-field class="chip-list" appearance="fill">
+        <mat-label>Palpites</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip color="primary" *ngFor="let numero of numeros" (removed)="remove(numero)">
+            {{numero}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end start" *ngIf="isVisible()">
+    <span class="quantidade">
+      <a class="texto">Quantidade: {{quantidade}}</a>
+      <a mat-button (click)="removeAll()">
+        <mat-icon>delete</mat-icon>
+      </a>
+    </span>
+  </div>
+</div>

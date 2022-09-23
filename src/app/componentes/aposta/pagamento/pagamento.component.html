@@ -1,0 +1,79 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <mat-card fxShow="true" fxHide.lt-md>
+        <mat-card-title>Pagamento</mat-card-title>
+        <br>
+        <mat-card-subtitle>Extração: {{dsExtracao}}</mat-card-subtitle>
+        <mat-card-subtitle class="numeros">Total: {{getTotalGeral() | currency : 'BRL'}}</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card fxShow="true" fxHide.gt-sm>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span>
+                <a>Pagamento</a>
+            </span>
+            <span class="spacer"></span>
+            <a mat-icon-button (click)="maisJogos()">
+                <mat-icon>add_circle</mat-icon>
+            </a>
+            <a mat-icon-button (click)="pagar()">
+                <mat-icon>monetization_on</mat-icon>
+            </a>
+        </div>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="start end" fxShow="true" fxHide.lt-md>
+        <button mat-stroked-button (click)="cancel()">
+            Cancelar
+        </button>
+        <span class="spacer"></span>
+        <button mat-stroked-button (click)="maisJogos()">
+            Mais jogos
+        </button>
+        <button mat-raised-button color="accent" (click)="pagar()" class="button-1 button-2">
+            Pagar
+        </button>
+      </div>
+
+    <span fxShow="true" fxHide.gt-sm class="bilhete">
+        <div class="label-bilhete">
+          <p>
+            Extração: {{dsExtracao}}
+            <br>
+            Total: {{getTotalGeral() | currency : 'BRL'}}
+          </p>
+        </div>
+      </span>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="body">
+        <table mat-table [dataSource]="apostas" class="mat-elevation-z8">
+            <!-- Name Column -->
+            <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let aposta">
+                    <table class="detalhe-table">
+                        <tr class="detalhe">
+                            Modalidade: {{aposta.tipo.descricao}}
+                        </tr>
+                        <tr class="numeros">
+                            Palpites: {{aposta.numeros}}
+                        </tr>
+                        <table>
+                            <ng-container>
+                                <td>
+                                    <tr *ngFor="let premio of aposta.premios" class="detalhe-premio premio">
+                                        <a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                            | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+                                    </tr>
+                                </td>
+                            </ng-container>
+                        </table>
+
+                    </table>
+                </td>
+            </ng-container>
+
+
+            <tr mat-row *matRowDef="let aposta; columns: displayedColumns;">
+            </tr>
+        </table>
+    </div>
+</div>

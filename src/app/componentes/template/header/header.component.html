@@ -1,0 +1,39 @@
+<div style="height: 100vh;">
+    <mat-toolbar *ngIf="isLoggedIn$ | async">
+        <mat-toolbar-row>
+            <span fxShow="true" fxHide.lt-md > 
+                <a routerLink="aposta/extracoes">
+                    <img class="logo" src="assets/img/logo.png" alt="logo">
+                </a>
+            </span>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span style="margin-left: 10px;"><a>JB Online</a></span>
+            <span class="example-spacer"></span>
+            <div fxShow="true" fxHide.lt-md="true">
+                <a routerLink="aposta/extracoes" mat-button>Aposta</a>
+                <a mat-button>Minhas apostas</a>
+                <a mat-button>Resultado</a>
+            </div>
+            <span fxShow="true" fxHide.gt-sm > 
+                <a mat-icon-button routerLink="aposta/extracoes" class="cancel" *ngIf="isExtracaoIn$ | async">
+                    <mat-icon>cancel</mat-icon>  
+                </a>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill style="height: 100vh;">
+        <mat-sidenav #sidenav>
+            <mat-nav-list>
+                <a routerLink="aposta/extracoes" mat-list-item><mat-icon>home</mat-icon>Inicio</a>
+                <a routerLink="aposta/extracoes" mat-list-item><mat-icon>attach_money</mat-icon>Aposta</a>
+                <a mat-list-item><mat-icon>receipt_long</mat-icon>Minhas apostas</a>
+                <a mat-list-item><mat-icon>paid</mat-icon>Resultado</a>              
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,47 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+  <mat-card fxShow="true" fxHide.lt-md>
+    <mat-card-title>Selecione a extração</mat-card-title>
+  </mat-card>
+  <mat-card fxShow="true" fxHide.gt-sm>
+    <div fxLayout="row wrap" fxLayoutAlign="start center" >
+      <span> 
+        <a>Selecione uma extração</a>
+      </span>   
+    </div>
+  </mat-card>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="extra-card" fxShow="true" fxHide.lt-md>
+    <!-- loop over the cardList and show the cards -->
+    <div *ngFor="let extracao of extracoes" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+      style="padding: 1px;">
+      <!-- cards here -->
+      <mat-card class="mat-elevation-z1" class="mat-card-2">
+        <button fxFlex mat-flat-button (click)="proximo(extracao)" class="button2">
+          <div class="descricao">
+            {{extracao.descricao}}
+          </div>
+          <div class="hora">
+            {{extracao.hora}}
+          </div>
+        </button>
+      </mat-card>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="extra-card" fxShow="true" fxHide.gt-sm>
+    <!-- loop over the cardList and show the cards -->
+    <div *ngFor="let extracao of extracoes" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+      style="padding: 1px;">
+      <!-- cards here -->
+      <mat-card class="mat-elevation-z1" class="mat-card-2">
+        <button fxFlex mat-flat-button (click)="proximo(extracao)">
+          <div class="descricao">
+            {{extracao.descricao}}
+          </div>
+          <div class="hora">
+            {{extracao.hora}}
+          </div>
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>
