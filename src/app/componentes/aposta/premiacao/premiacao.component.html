@@ -61,7 +61,7 @@
         <div fxLayout="row wrap" fxLayoutAlign="center center" class="cards">
             <mat-button-toggle-group [(ngModel)]="premiacao.nuDo" name="dopremio" aria-label="Do prêmio">
                 <ng-container *ngFor="let premio of premiosDO" style="padding: 0.5%;" name="premioDO">
-                    <mat-button-toggle value="{{premio.id}}" class="extra-card" (change)="isEnabled(premio.id)"
+                    <mat-button-toggle value="{{premio.id}}" class="extra-card" (change)="isEnabled(premio.id)" [disabled]="!premio.enabled"
                         [hidden]="!premio.visible">{{premio.num}}</mat-button-toggle>
                 </ng-container>
             </mat-button-toggle-group>
@@ -98,7 +98,7 @@
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="center center">     
             <mat-form-field>
-                <input matInput currencyMask placeholder="R$" [(ngModel)]="premiacao.valor" name="valor" class="edit"
+                <input matInput currencyMask placeholder="R$" [formControl]="formCtrl" [(ngModel)]="premiacao.valor" name="valor" class="edit"
                     [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', precision: 2 }">
             </mat-form-field>
         </div>
