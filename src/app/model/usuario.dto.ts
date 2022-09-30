@@ -1,5 +1,9 @@
 export class UsuarioDTO {
 
-    username: string ="";
-    password: string ="";
+    nome: string ="";
+    cpf: string="";
+    email: string="";
+    telefone: string="";
+    login: string ="";
+    senha: string ="";
 }

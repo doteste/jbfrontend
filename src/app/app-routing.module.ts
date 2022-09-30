@@ -1,3 +1,4 @@
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { AuthGuard } from './componentes/view/auth.guard';
 import { LoginComponent } from './componentes/view/login/login.component';
 import { PagamentoComponent } from './componentes/aposta/pagamento/pagamento.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: "aposta/login",
     component: LoginComponent
+  },
+  {
+    path: "login/usuario",
+    component: UsuarioComponent
   },
 ];
 
