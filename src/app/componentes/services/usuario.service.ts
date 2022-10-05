@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { UsuarioDTO } from './../../model/usuario.dto';
+import { UsuarioDTO } from '../../model/usuario.model';
 import { EnviromentUtil } from './../../util/enviroment-util';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

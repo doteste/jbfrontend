@@ -52,8 +52,8 @@ export class PremiacaoComponent implements OnInit {
     let premio: PremiacaoCalculoDTO = this.getPremioValorDTO();
     this.premiacaoService.calcular(premio).subscribe(res => {
       this.premiacao.valorTotal = res;
-      this.premiacao.index = this.apostaService.aposta.premios.length + 1;
-      this.apostaService.aposta.premios.push(this.premiacao);
+      this.premiacao.index = this.apostaService.aposta.premiacoes.length + 1;
+      this.apostaService.aposta.premiacoes.push(this.premiacao);
       this.limparForm();
     })
   }
@@ -67,8 +67,8 @@ export class PremiacaoComponent implements OnInit {
       
       this.premiacaoService.calcular(premio).subscribe(res => {
         this.premiacao.valorTotal = res;
-        this.premiacao.index = this.apostaService.aposta.premios.length + 1;
-        this.apostaService.aposta.premios.push(this.premiacao);
+        this.premiacao.index = this.apostaService.aposta.premiacoes.length + 1;
+        this.apostaService.aposta.premiacoes.push(this.premiacao);
         this.apostaService.adicionar();
 
         this.router.navigate(['aposta/pagamento']);

@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
       } 
       this.authService.login(credenciais).subscribe(res =>{
         this.apostaService.credenciais = credenciais;
+        this.apostaService.setUSuarioLogado(res);
         this.authService.setLoggedIn(true);
         this.router.navigate(['aposta/extracoes']);
       },

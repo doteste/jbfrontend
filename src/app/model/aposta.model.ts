@@ -9,7 +9,7 @@ export class Aposta {
     tipo!: Tipo;
     numeros!: string;
     quantidade: number =0;
-    premios: Premiacao[] = [];
+    premiacoes: Premiacao[] = [];
     numValor!: number;
     numValorTotal!: number;
     numerosList: string[] = [];

@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { ApostaService } from './../services/aposta.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsuarioDTO } from './../../model/usuario.dto';
+import { UsuarioDTO } from '../../model/usuario.model';
 import { UsuarioService } from './../services/usuario.service';
 
 @Component({

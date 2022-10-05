@@ -13,8 +13,9 @@
             <span class="example-spacer"></span>
             <div fxShow="true" fxHide.lt-md="true">
                 <a routerLink="aposta/extracoes" mat-button>Aposta</a>
-                <a mat-button>Minhas apostas</a>
+                <a routerLink="aposta/bilhetes" mat-button>Minhas apostas</a>
                 <a mat-button>Resultado</a>
+                <a (click)="logout()"><i><mat-icon>logout</mat-icon></i></a>
             </div>
             <span fxShow="true" fxHide.gt-sm > 
                 <a mat-icon-button routerLink="aposta/extracoes" class="cancel" *ngIf="isExtracaoIn$ | async">
@@ -28,8 +29,9 @@
             <mat-nav-list>
                 <a routerLink="aposta/extracoes" mat-list-item><mat-icon>home</mat-icon>Inicio</a>
                 <a routerLink="aposta/extracoes" mat-list-item><mat-icon>attach_money</mat-icon>Aposta</a>
-                <a mat-list-item><mat-icon>receipt_long</mat-icon>Minhas apostas</a>
-                <a mat-list-item><mat-icon>paid</mat-icon>Resultado</a>              
+                <a routerLink="aposta/bilhetes" mat-list-item><mat-icon>receipt_long</mat-icon>Minhas apostas</a>
+                <a mat-list-item><mat-icon>paid</mat-icon>Resultado</a>    
+                <a mat-list-item><mat-icon>logout</mat-icon>Sair</a>          
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content fxFlexFill>

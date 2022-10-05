@@ -1,6 +1,6 @@
 import { Bilhete } from './../../model/bilhete.model';
 import { ICredenciais } from './../../model/credenciais';
-import { UsuarioDTO } from './../../model/usuario.dto';
+import { UsuarioDTO } from '../../model/usuario.model';
 import { Aposta } from './../../model/aposta.model';
 
 import { Injectable } from '@angular/core';
@@ -13,7 +13,9 @@ export class ApostaService {
 
   aposta: Aposta = new Aposta();
   bilhete: Bilhete = new Bilhete;
+  bilheteSalvo: Bilhete = new Bilhete();
   credenciais!: ICredenciais;
+  private usuarioLogado: UsuarioDTO = new UsuarioDTO();
 
   constructor(private snackBar: MatSnackBar) { }
 
@@ -27,6 +29,14 @@ export class ApostaService {
       horizontalPosition: "center",
       verticalPosition: "top"
     })
+  }
+
+  getUsuarioLogado() : UsuarioDTO {
+    return this.usuarioLogado;
+  }
+
+  setUSuarioLogado(usuario: UsuarioDTO) : void {
+    this.usuarioLogado = usuario;
   }
 
 

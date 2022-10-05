@@ -19,7 +19,7 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
-					<form [formGroup]="formCadastro">
+					<form [formGroup]="formCadastro" (submit)="salvar()" appFocus>
                         <div class="input-group mb-4 justify-content-center">
                             <label>Cadastre seu usuário</label>
                         </div>
@@ -47,7 +47,7 @@
 							<input type="password" name="" class="form-control input_pass" value="" placeholder="Confirmar senha" formControlName="confirmacao" >
 						</div> 
                         <br>
-                        <button mat-stroked-button class="btn_confirmar" (click)="salvar()">
+                        <button type="submit" mat-stroked-button class="btn_confirmar" >
                             Confirmar
                         </button>
                         <button mat-stroked-button class="btn_cancel" (click)="cancelar()">

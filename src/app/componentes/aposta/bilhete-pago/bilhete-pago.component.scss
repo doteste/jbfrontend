@@ -1,0 +1,69 @@
+	/* Coded with love by Mutiullah Samim */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #3a3c3d !important;
+    }
+    .user_card {
+        height: 850px;
+        width: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: rgb(241, 237, 179);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+
+    }
+    .form_container {
+        margin-top: 1px;
+    }
+    .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+    }
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+    .login_container {
+        padding: 0 2rem;
+    }
+
+    label {
+        color: black;
+        font-family:'Courier New', Courier, monospace;
+        font-size: 1.2rem;
+    }
+
+    tr {
+        color: black;
+        font-family:'Courier New', Courier, monospace;
+        font-size: 1.2rem;
+    }
+
+    .btn_cancel {
+        margin-top: 10px;
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+    }
+
+    .btn_confirmar {
+        width: 100%;
+        background: #059133 !important;
+        color: white !important;
+    }
+
+    
+    .spacer {
+        flex: 1 0 auto;
+    }

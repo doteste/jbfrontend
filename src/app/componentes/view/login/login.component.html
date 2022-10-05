@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form [formGroup]="formLogin" (submit)="login()">
+					<form [formGroup]="formLogin" (submit)="login()" appFocus>
 						
 						<div class="input-group mb-3">
 							<div class="input-group-append">
@@ -39,7 +39,7 @@
 							<input type="password" name="" class="form-control input_pass" value="" placeholder="senha" formControlName="senha" >
 						</div>
 						<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn" (click)="login()" [disabled]="loading">
+				 	<button type="submit" name="button" class="btn login_btn" [disabled]="loading">
 						Login
 					</button>
 				   </div>
@@ -57,7 +57,7 @@
 				</div>
 				<div>
 					<div class="d-flex justify-content-center versao">
-						Versão: beta.0.0.2
+						Versão: beta.0.0.3
 					</div>
 				</div>
 			</div>

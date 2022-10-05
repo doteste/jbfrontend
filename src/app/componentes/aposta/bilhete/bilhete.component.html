@@ -1,0 +1,90 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <mat-card fxShow="true" fxHide.lt-md>
+        <mat-card-title>Minhas Apostas</mat-card-title>
+    </mat-card>
+
+    <mat-card fxShow="true" fxHide.gt-sm>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span>
+                <a>Minhas Apostas</a>
+            </span>
+            <span class="spacer"></span>
+        </div>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="start end" fxShow="true" fxHide.lt-md>
+        <button mat-stroked-button (click)="cancel()">
+            Cancelar
+        </button>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="body" fxShow="true" fxHide.gt-sm>
+        <table mat-table [dataSource]="bilhetes" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let bilhete">
+                    <table class="detalhe-table">
+        
+                        <tr class="detalhe">Data: {{bilhete.dhAposta | date: 'dd/MM/yyyy hh:mm'}} </tr>
+                        <tr class="detalhe">Extração: {{bilhete.extracao.descricao}} Hora: {{bilhete.extracao.hora}}</tr> 
+                        <tr *ngFor="let aposta of bilhete.apostas" class="detalhe">
+                            <table>
+                                <tr>Modalidade: {{aposta.tipo.descricao}}</tr>
+                                <tr class="numeros">Palpites: {{aposta.numeros}}</tr>
+                                <tr *ngFor="let premio of aposta.premiacoes" class="detalhe-premio premio">
+                                    <a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                        | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+                                </tr>
+                            </table>
+                        </tr>
+                        <tr class="detalhe total">Total: {{bilhete.valorTotal | currency : 'BRL'}}</tr>  
+                    </table>
+                </td>
+            </ng-container>
+           
+            <tr mat-row *matRowDef="let aposta; columns: displayedColumnsMobile;">
+            </tr>
+        </table>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="body" fxShow="true" fxHide.lt-md>
+        <table mat-table [dataSource]="bilhetes" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let bilhete" class="detalhe">
+                    <table class="detalhe-table">
+                        <tr class="detalhe">Data: {{bilhete.dhAposta | date: 'dd/MM/yyyy hh:mm'}} </tr>
+                        <tr class="detalhe">Extração: {{bilhete.extracao.descricao}} Hora: {{bilhete.extracao.hora}}</tr>
+                        <tr class="detalhe total">Total: {{bilhete.valorTotal | currency : 'BRL'}}</tr> 
+                    </table>      
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let bilhete">
+                    <table class="detalhe-table">
+                        
+                        
+                        <tr *ngFor="let aposta of bilhete.apostas" class="detalhe">
+                            <table>
+                                <tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
+                                <tr class="numeros">Palpites: {{aposta.numeros}}</tr>
+                                <tr *ngFor="let premio of aposta.premiacoes" class="detalhe-premio premio">
+                                    <a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                        | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+                                </tr>
+                            </table>
+                        </tr>
+                         
+                    </table>
+                </td>
+            </ng-container>
+            
+            <tr mat-row *matRowDef="let aposta; columns: displayedColumns;">
+            </tr>
+        </table>
+    </div>
+</div>

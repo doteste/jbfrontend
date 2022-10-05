@@ -1,3 +1,5 @@
+import { Bilhete } from './../../../model/bilhete.model';
+import { BilheteService } from './../../services/bilhete.service';
 import { Router } from '@angular/router';
 import { ApostaService } from '../../services/aposta.service';
 import { Aposta } from './../../../model/aposta.model';
@@ -12,10 +14,13 @@ export class PagamentoComponent implements OnInit {
 
   dsExtracao!: string;
   apostas: Aposta[] = [];
-
+  
   displayedColumns = ['descricao'];
 
-  constructor(private apostaService: ApostaService, private router: Router) { }
+  constructor(
+    private apostaService: ApostaService, 
+    private bilheteService: BilheteService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.dsExtracao = this.apostaService.bilhete.extracao.descricao;
@@ -25,7 +30,7 @@ export class PagamentoComponent implements OnInit {
   getTotalGeral() :number {
     let totalGeral = 0;
     this.apostaService.bilhete.apostas.forEach(aposta => {
-      aposta.premios.forEach(premio => {
+      aposta.premiacoes.forEach(premio => {
         totalGeral += premio.valorTotal;
       });
     });
@@ -41,6 +46,11 @@ export class PagamentoComponent implements OnInit {
   }
 
   pagar() : void {
+
+    this.bilheteService.salvar().subscribe(res => {
+      this.apostaService.bilheteSalvo = res;
+      this.router.navigate(['/aposta/comprovante']);
+    })
 
   }
 
