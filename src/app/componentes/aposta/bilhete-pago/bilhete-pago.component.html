@@ -15,72 +15,79 @@
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
+	<div>
+		<mat-card>
+			<mat-card-title class="d-flex justify-content-center h-100">Boa sorte</mat-card-title>
+		  </mat-card>
+	</div>
+	
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
-			<div class="user_card">
 				<div class="d-flex">
 					<form style="height: 200px;">
-						<div id="container">
-							<div class="row">
-								<div class="column-3 column label">
-									<label>Banca online</label>
-								</div>
-								<div class="column-3 column label" style="width: 70px; height: 0px;">
-									<label></label>
-								</div>
-								<div class="column-9 column input">
-									<label>Data: {{bilhetePago.dhAposta | date: 'dd/MM/yyyy hh:mm'}}</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="column-3 column label">
-									<label>Número Poule: 00000002</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="column-3 column label">
-									<label>Extração: {{bilhetePago.extracao.descricao}}</label>
-								</div>
-								<div class="column-3 column label" style="width: 70px; height: 0px;"></div>
-								<div class="column-9 column input">
-									<label>Hora: {{bilhetePago.extracao.hora}}</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="column-3 column label">
-									<label>Total Pago: {{bilhetePago.valorTotal}}</label>
-								</div>
-							</div>
-							<hr size="1" style="border:1px dashed;">
-							<div class="row">
-								<div class="column-3 column label">
-									<table class="detalhe-table">
-                       
-										<tr *ngFor="let aposta of bilhetePago.apostas">
-											<table>
-												<tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
-												<tr class="numeros">Palpites: {{aposta.numeros}}</tr>
-												<tr *ngFor="let premio of aposta.premiacoes" class="label">
-													<a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
-														| currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
-												</tr>
-												<tr><hr size="1" style="border:1px dashed;"></tr>
-											</table>
-										</tr>
-										 
-									</table>
-								</div>
-							</div>
-
-							
-							
-						</div>
-
-
+						<table mat-table [dataSource]="bilhetePago" class="bilhete">
+							<ng-container matColumnDef="descricao">
+								<td mat-cell *matCellDef="let bilhete">
+									<div id="container">
+										<div class="row">
+											<div class="column-3 column label">
+												<label>Banca online</label>
+											</div>
+											<div class="column-3 column label" style="width: 70px; height: 0px;">
+												<label></label>
+											</div>
+											<div class="column-9 column input">
+												<label>Data: {{bilhete.dhAposta | date: 'dd/MM/yyyy hh:mm'}}</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="column-3 column label">
+												<label>Número Poule: 00000002</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="column-3 column label">
+												<label>Extração: {{bilhete.extracao.descricao}}</label>
+											</div>
+											<div class="column-3 column label" style="width: 70px; height: 0px;"></div>
+											<div class="column-9 column input">
+												<label>Hora: {{bilhete.extracao.hora}}</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="column-3 column label">
+												<label>Total Pago: {{bilhete.valorTotal}}</label>
+											</div>
+										</div>
+										<hr size="1" style="border:1px dashed;">
+										<div class="row">
+											<div class="column-3 column label">
+												<table class="detalhe-table">
+								   
+													<tr *ngFor="let aposta of bilhete.apostas">
+														<table>
+															<tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
+															<tr class="numeros">Palpites: {{aposta.numeros}}</tr>
+															<tr *ngFor="let premio of aposta.premiacoes" class="label">
+																<a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+																	| currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+															</tr>
+															<tr><hr size="1" style="border:1px dashed;"></tr>
+														</table>
+													</tr>
+													 
+												</table>
+											</div>
+										</div>				
+									</div>
+								</td>
+							</ng-container>
+							<tr mat-row *matRowDef="let aposta; columns: displayedColumns;"></tr>
+						</table>
+						
 					</form>
 				</div>
 		
-			</div>
 		</div>
 	</div>
 </body>

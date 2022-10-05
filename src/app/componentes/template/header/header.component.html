@@ -6,18 +6,30 @@
                     <img class="logo" src="assets/img/logo.png" alt="logo">
                 </a>
             </span>
-            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm class="menuButton">
                 <mat-icon>menu</mat-icon>
             </button>
             <span style="margin-left: 10px;"><a>JB Online</a></span>
             <span class="example-spacer"></span>
             <div fxShow="true" fxHide.lt-md="true">
-                <a routerLink="aposta/extracoes" mat-button>Aposta</a>
-                <a routerLink="aposta/bilhetes" mat-button>Minhas apostas</a>
-                <a mat-button>Resultado</a>
-                <a (click)="logout()"><i><mat-icon>logout</mat-icon></i></a>
+                <button mat-raised-button routerLink="aposta/extracoes">
+                    <mat-icon>receipt</mat-icon>
+                    Apostas
+                </button> 
+                <button mat-raised-button routerLink="aposta/bilhetes">
+                    <mat-icon>receipt_long</mat-icon>
+                    Minhas apostas
+                </button> 
+                <button mat-raised-button>
+                    <mat-icon>event_note</mat-icon>
+                    Resultado
+                </button>  
+                <button mat-raised-button (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    Sair
+                </button>            
             </div>
-            <span fxShow="true" fxHide.gt-sm > 
+            <span fxShow="true" fxHide.gt-sm> 
                 <a mat-icon-button routerLink="aposta/extracoes" class="cancel" *ngIf="isExtracaoIn$ | async">
                     <mat-icon>cancel</mat-icon>  
                 </a>
@@ -28,9 +40,9 @@
         <mat-sidenav #sidenav>
             <mat-nav-list>
                 <a routerLink="aposta/extracoes" mat-list-item><mat-icon>home</mat-icon>Inicio</a>
-                <a routerLink="aposta/extracoes" mat-list-item><mat-icon>attach_money</mat-icon>Aposta</a>
+                <a routerLink="aposta/extracoes" mat-list-item><mat-icon>receipt</mat-icon>Aposta</a>
                 <a routerLink="aposta/bilhetes" mat-list-item><mat-icon>receipt_long</mat-icon>Minhas apostas</a>
-                <a mat-list-item><mat-icon>paid</mat-icon>Resultado</a>    
+                <a mat-list-item><mat-icon>event_note</mat-icon>Resultado</a>    
                 <a mat-list-item><mat-icon>logout</mat-icon>Sair</a>          
             </mat-nav-list>
         </mat-sidenav>

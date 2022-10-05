@@ -10,16 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BilhetePagoComponent implements OnInit {
 
-  formCadastro: FormControl = new FormControl();
-
-  bilhetePago: Bilhete = new Bilhete();
+  bilhetePago: Bilhete[] = [];
+  displayedColumns = ['descricao'];
 
   constructor(private apostaService: ApostaService) { 
 
   }
 
   ngOnInit(): void {
-    this.bilhetePago = this.apostaService.bilheteSalvo;
+    this.bilhetePago.push(this.apostaService.bilheteSalvo);
   }
 
 }

@@ -12,7 +12,7 @@ export class BilheteComponent implements OnInit {
 
   bilhetes: Bilhete[] = [];
 
-  displayedColumns = ['data','descricao'];
+  displayedColumns = ['descricao'];
   displayedColumnsMobile = ['descricao'];
 
   constructor(
