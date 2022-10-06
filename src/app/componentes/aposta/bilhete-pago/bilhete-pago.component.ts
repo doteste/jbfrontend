@@ -12,6 +12,7 @@ export class BilhetePagoComponent implements OnInit {
 
   bilhetePago: Bilhete[] = [];
   displayedColumns = ['descricao'];
+  displayedColumnsMobile = ['descricao'];
 
   constructor(private apostaService: ApostaService) { 
 

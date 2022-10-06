@@ -23,7 +23,7 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide.gt-sm>
         <!-- loop over the cardList and show the cards -->
-        <div *ngFor="let bilhete of bilhetes" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
           style="padding: 1px;">
           <!-- cards here -->
           <table mat-table [dataSource]="bilhetes" class="bilhete2">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="row linha">
                             <div class="column-3 column label coluna2">
-                                <label>Total Pago: {{bilhete.valorTotal}}</label>
+                                <label>Total Pago: {{bilhete.valorTotal | currency : 'BRL'}}</label>
                             </div>
                         </div>
                         <hr size="1" style="border:1px dashed black;">
@@ -112,7 +112,7 @@
 										</div>
 										<div class="row linha">
 											<div class="column-3 column label coluna">
-												<label>Total Pago: {{bilhete.valorTotal}}</label>
+												<label>Total Pago: {{bilhete.valorTotal | currency : 'BRL'}}</label>
 											</div>
 										</div>
                                         <hr size="1" style="border:1px dashed black;">

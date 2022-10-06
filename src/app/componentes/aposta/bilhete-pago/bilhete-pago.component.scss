@@ -3,34 +3,19 @@
     html {
         margin: 0;
         padding: 0;
-        height: 200%;
         background: #3a3c3d !important;
     }
-
+  
     .bilhete {
         margin-top: 15px;
         background: rgb(241, 237, 179);
         position: relative;
         display: flex;
     }
-    .user_card {
-        height: auto;
-        width: 590px;
-        margin-top: 30px;
-        margin-bottom: auto;
-        background: rgb(241, 237, 179);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        padding-top: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: 5px;
-
-    }
+  
     .form_container {
         margin-top: 1px;
+        margin-left: 0;
     }
     .login_btn {
         width: 100%;
@@ -44,33 +29,60 @@
     .login_container {
         padding: 0 2rem;
     }
-
+  
     label {
         color: black;
         font-family:'Courier New', Courier, monospace;
         font-size: 1.2rem;
+        margin-top: 5px;
     }
-
+  
     tr {
         color: black;
         font-family:'Courier New', Courier, monospace;
         font-size: 1.2rem;
     }
-
+  
     .btn_cancel {
         margin-top: 10px;
         width: 100%;
         background: #c0392b !important;
         color: white !important;
     }
-
+  
     .btn_confirmar {
         width: 100%;
         background: #059133 !important;
         color: white !important;
     }
-
+  
     
     .spacer {
         flex: 1 0 auto;
     }
+  
+    .linha {
+      height: 25px;
+    }
+  
+    .coluna {
+      width: 600px;
+    }
+  
+    .coluna2 {
+      width: 387px;
+    }
+    .mat-column-descricao {
+      border-bottom: 5px solid #3a3c3d;
+      border-top: 5px solid #3a3c3d;
+      position: relative;
+    }
+  
+    .bilhete2 {
+      margin: 15px 10px 0 2px;
+      background: rgb(241, 237, 179);
+      position: relative;
+      display: flex;
+      font-family:'Courier New', Courier, monospace;
+  }
+  
