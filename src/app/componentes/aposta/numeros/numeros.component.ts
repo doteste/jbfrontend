@@ -59,7 +59,7 @@ export class NumerosComponent implements OnInit {
       this.apostaService.aposta.numeros = this.listToNum(this.apostaService.aposta.tipo);
       this.apostaService.aposta.numerosList = this.numeros;
       this.apostaService.aposta.quantidade = this.quantidade;
-      this.router.navigate(['aposta/premiacao']);
+      this.router.navigate(['aposta/colocacao']);
     }
   }
 

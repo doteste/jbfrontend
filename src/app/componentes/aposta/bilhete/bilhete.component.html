@@ -64,7 +64,7 @@
                                             <tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
                                             <tr class="numeros">Palpites: {{aposta.numeros}}</tr>
                                             <tr *ngFor="let premio of aposta.premiacoes" class="label">
-                                                <a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                                <a>Colocação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
                                                     | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
                                             </tr>
                                 
@@ -124,7 +124,7 @@
 															<tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
 															<tr class="numeros">Palpites: {{aposta.numeros}}</tr>
 															<tr *ngFor="let premio of aposta.premiacoes" class="label">
-																<a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+																<a>Colocação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
 																	| currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
 															</tr>
 												

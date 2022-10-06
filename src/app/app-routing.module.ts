@@ -33,7 +33,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "aposta/premiacao",
+    path: "aposta/colocacao",
     component: PremiacaoComponent,
     canActivate: [AuthGuard]
   },
