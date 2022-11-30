@@ -1,9 +1,10 @@
-import { Bilhete } from './../../../model/bilhete.model';
+import { PagamentoService } from './../../services/pagamento.service';
 import { BilheteService } from './../../services/bilhete.service';
 import { Router } from '@angular/router';
 import { ApostaService } from '../../services/aposta.service';
 import { Aposta } from './../../../model/aposta.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-pagamento',
@@ -14,12 +15,15 @@ export class PagamentoComponent implements OnInit {
 
   dsExtracao!: string;
   apostas: Aposta[] = [];
+  codigoCheckout!: any;
   
   displayedColumns = ['descricao'];
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     private apostaService: ApostaService, 
     private bilheteService: BilheteService,
+    private pagamentoService: PagamentoService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -46,12 +50,8 @@ export class PagamentoComponent implements OnInit {
   }
 
   pagar() : void {
-
-    this.bilheteService.salvar().subscribe(res => {
-      this.apostaService.bilheteSalvo = res;
-      this.router.navigate(['/aposta/comprovante']);
-    })
-
+    console.log(123);
+    this.router.navigate(['aposta/pagamento/cartao']);
   }
 
 }

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class UsuarioService {
 
   api = EnviromentUtil.API;
-  endpoint = this.api + '/api/usuario/';
+  endpoint = this.api + '/api/usuario';
 
   constructor(
     private http: HttpClient
