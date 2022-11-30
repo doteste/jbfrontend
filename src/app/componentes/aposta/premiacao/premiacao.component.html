@@ -1,0 +1,108 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <mat-card fxShow="true" fxHide.lt-md>
+        <mat-card-title>Premiação</mat-card-title>
+        <br>
+        <mat-card-subtitle>Extração: {{dsExtracao}}</mat-card-subtitle>
+        <mat-card-subtitle>Modalidade: {{dsTipo}} </mat-card-subtitle>
+        <mat-card-subtitle>Palpites: {{dsNumeros}} </mat-card-subtitle>
+    </mat-card>
+    <mat-card fxShow="true" fxHide.gt-sm>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span>
+                <a mat-icon-button (click)="voltar()">
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </a>
+            </span>
+            <span>
+                <a>Premiação</a>
+            </span>
+            <span class="spacer"></span>
+            <a mat-icon-button (click)="maisPremios()">
+                <mat-icon>add_circle</mat-icon>
+            </a>
+            <a mat-icon-button (click)="finalizar()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </a>
+        </div>
+    </mat-card>
+
+    <span fxShow="true" fxHide.gt-sm class="bilhete">
+        <div class="label-bilhete">
+            <p>
+                Extração: {{dsExtracao}}
+                <br>
+                Modalidade: {{dsTipo}}
+                <br>
+                Palpites: {{dsNumeros}}
+            </p>
+        </div>
+    </span>
+
+    <div fxLayout="row" fxLayoutAlign="start end" fxShow="true" fxHide.lt-md>
+        <button mat-stroked-button (click)="cancel()">
+            Cancelar
+        </button>
+        <button mat-stroked-button (click)="voltar()" class="button-2">
+            Voltar
+        </button>
+        <span class="spacer"></span>
+        <button mat-stroked-button (click)="maisPremios()">
+            Mais prêmios
+        </button>
+        <button mat-stroked-button (click)="finalizar()" class="button-1 button-2">
+            Finalizar
+        </button>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <a class="texto">Do prêmio</a>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="cards">
+            <mat-button-toggle-group [(ngModel)]="premiacao.nuDo" name="dopremio" aria-label="Do prêmio">
+                <ng-container *ngFor="let premio of premiosDO" style="padding: 0.5%;" name="premioDO">
+                    <mat-button-toggle value="{{premio.id}}" class="extra-card" (change)="isEnabled(premio.id)"
+                        [hidden]="!premio.visible">{{premio.num}}</mat-button-toggle>
+                </ng-container>
+            </mat-button-toggle-group>
+        </div>
+        <br>
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <a class="texto">Ao prêmio</a>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="cards">
+            <mat-button-toggle-group [(ngModel)]="premiacao.nuAo" name="aopremio" aria-label="Ao prêmio">
+                <ng-container *ngFor="let premio of premiosAO" style="padding: 0.5%;" name="premioAO">
+                    <mat-button-toggle value="{{premio.id}}" class="extra-card" [disabled]="!premio.enabled"
+                        [hidden]="!premio.visible">{{premio.num}}</mat-button-toggle>
+                </ng-container>
+            </mat-button-toggle-group>
+        </div>
+
+        <br>
+
+        <div *ngIf="isNotQuinaOuSena()">
+            <div fxLayout="row wrap" fxLayoutAlign="center center">
+                <a class="texto">Selecione o tipo da aposta</a>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;">
+                <mat-button-toggle-group [(ngModel)]="premiacao.flMultiplicacao" [formControl]="formCtrl">
+                    <mat-button-toggle class="button-tipo" value="true">Multiplicada</mat-button-toggle>
+                    <mat-button-toggle class="button-tipo" value="false">Dividida</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+        <br>
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <a class="texto">Valor da aposta</a>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="center center">     
+            <mat-form-field>
+                <input matInput currencyMask placeholder="R$" [(ngModel)]="premiacao.valor" name="valor" class="edit"
+                    [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', precision: 2 }">
+            </mat-form-field>
+        </div>
+    </div>
+
+
+</div>
