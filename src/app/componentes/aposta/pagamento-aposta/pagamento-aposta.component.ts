@@ -55,11 +55,19 @@ export class PagamentoApostaComponent implements OnInit {
           this.bilheteService.salvar().subscribe(res1 => {
             this.apostaService.bilheteSalvo = res1;
             this.router.navigate(['/aposta/comprovante']);
+          },
+          error => {
+            const errorMessage = error.message;
+            this.apostaService.showMessage(errorMessage);
           });
         }else{
           this.apostaService.showMessage('Pagamento não foi aprovado!');
         }
         
+      },
+      error => {
+        const errorMessage = error.message;
+        this.apostaService.showMessage(errorMessage);
       })
     }else{
       this.apostaService.showMessage('Informe todos os campos para prosseguir');
