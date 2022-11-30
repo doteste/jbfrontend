@@ -1,0 +1,150 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+<!--Coded with love by Mutiullah Samim-->
+<body>
+	<div>
+		<mat-card>
+			<mat-card-title>Boa sorte!</mat-card-title>
+		  </mat-card>
+	</div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide.gt-sm>
+        <!-- loop over the cardList and show the cards -->
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+          style="padding: 1px;">
+          <!-- cards here -->
+          <table mat-table [dataSource]="bilhetePago" class="bilhete2">
+            <ng-container matColumnDef="descricao">
+                <td mat-cell *matCellDef="let bilhete">
+                    <div id="container">
+                        <div class="row linha">
+                            <div class="column-3 column label coluna2 ">
+                                <label>Banca online</label>
+                            </div>
+                        </div>
+                        <div class="row linha">
+                            <div class="column-3 column label coluna2">
+                                <label>Data: {{bilhete.dhAposta | date: 'dd/MM/yyyy hh:mm'}}</label>
+                            </div>
+                        </div>
+                        <div class="row linha">
+                            <div class="column-3 column label coluna2">
+                                <label>Número Poule: 00000002</label>
+                            </div>
+                        </div>
+                        <div class="row linha">
+                            <div class="column-3 column label coluna2">
+                                <label>Extração: {{bilhete.extracao.descricao}} {{bilhete.extracao.hora}}</label>
+                            </div>
+                        </div>
+                        <div class="row linha">
+                            <div class="column-3 column label coluna2">
+                                <label>Total Pago: {{bilhete.valorTotal | currency : 'BRL'}}</label>
+                            </div>
+                        </div>
+                        <hr size="1" style="border:1px dashed black;">
+                        <div class="row">
+                            <div class="column-3 column label coluna2">
+                                <table class="detalhe-table">
+                                    <tr *ngFor="let aposta of bilhete.apostas">
+                                        <table>
+                                            <tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
+                                            <tr class="numeros">Palpites: {{aposta.numeros}}</tr>
+                                            <tr *ngFor="let premio of aposta.premiacoes" class="label">
+                                                <a>Colocação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                                    | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+                                            </tr>
+                                
+                                        </table>
+                                    </tr>
+                                     
+                                </table>
+                            </div>
+                        </div>				
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-row *matRowDef="let aposta; columns: displayedColumns;"></tr>
+        </table>
+        </div>
+      </div>
+	
+	<div class="container h-100" fxShow="true" fxHide.lt-md>
+		<div class="d-flex justify-content-center h-100">
+				<div>
+					<form>
+						<table mat-table [dataSource]="bilhetePago" class="bilhete">
+							<ng-container matColumnDef="descricao">
+								<td mat-cell *matCellDef="let bilhete">
+									<div id="container">
+										<div class="row linha">
+											<div class="column-3 column label coluna ">
+												<label>Banca online</label>
+											</div>
+										</div>
+                                        <div class="row linha">
+											<div class="column-3 column label coluna">
+												<label>Data: {{bilhete.dhAposta | date: 'dd/MM/yyyy hh:mm'}}</label>
+											</div>
+										</div>
+										<div class="row linha">
+											<div class="column-3 column label coluna">
+												<label>Número Poule: {{bilhete.numero}}</label>
+											</div>
+										</div>
+										<div class="row linha">
+											<div class="column-3 column label coluna">
+												<label>Extração: {{bilhete.extracao.descricao}} {{bilhete.extracao.hora}}</label>
+											</div>
+										</div>
+										<div class="row linha">
+											<div class="column-3 column label coluna">
+												<label>Total Pago: {{bilhete.valorTotal  | currency : 'BRL'}}</label>
+											</div>
+										</div>
+                                        <hr size="1" style="border:1px dashed black;">
+										<div class="row">
+											<div class="column-3 column label coluna">
+												<table class="detalhe-table">
+													<tr *ngFor="let aposta of bilhete.apostas">
+														<table>
+															<tr>Modalidade: {{aposta.tipo.abreviatura}}-{{aposta.tipo.descricao}}</tr>
+															<tr class="numeros">Palpites: {{aposta.numeros}}</tr>
+															<tr *ngFor="let premio of aposta.premiacoes" class="label">
+																<a>Colocação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+																	| currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
+															</tr>
+												
+														</table>
+													</tr>
+													 
+												</table>
+											</div>
+										</div>				
+									</div>
+								</td>
+							</ng-container>
+							<tr mat-row *matRowDef="let aposta; columns: displayedColumns;"></tr>
+						</table>
+						
+					</form>
+				</div>
+		
+		</div>
+	</div>
+</body>
+</html>
+

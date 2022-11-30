@@ -45,20 +45,20 @@ export class PremiacaoComponent implements OnInit {
     this.dsExtracao = this.apostaService.bilhete.extracao.descricao;
     this.dsTipo = this.apostaService.aposta.tipo.abreviatura + "-" + this.apostaService.aposta.tipo.descricao;
     this.dsNumeros = this.apostaService.aposta.numeros;
+    this.desabilitarParaTD13();
   }
 
   maisPremios(): void {
     let premio: PremiacaoCalculoDTO = this.getPremioValorDTO();
     this.premiacaoService.calcular(premio).subscribe(res => {
       this.premiacao.valorTotal = res;
-      this.premiacao.index = this.apostaService.aposta.premios.length + 1;
-      this.apostaService.aposta.premios.push(this.premiacao);
+      this.premiacao.index = this.apostaService.aposta.premiacoes.length + 1;
+      this.apostaService.aposta.premiacoes.push(this.premiacao);
       this.limparForm();
     })
   }
 
   finalizar(): void {
-
     if (this.premiacao.nuDo === 0 || this.premiacao.nuAo === 0 || this.premiacao.valor === undefined 
       || this.premiacao.valor <= 0 || (this.isNotQuinaOuSena() && this.premiacao.flMultiplicacao === undefined)) {
       this.apostaService.showMessage('Informe todos os campos para prosseguir');
@@ -67,8 +67,8 @@ export class PremiacaoComponent implements OnInit {
       
       this.premiacaoService.calcular(premio).subscribe(res => {
         this.premiacao.valorTotal = res;
-        this.premiacao.index = this.apostaService.aposta.premios.length + 1;
-        this.apostaService.aposta.premios.push(this.premiacao);
+        this.premiacao.index = this.apostaService.aposta.premiacoes.length + 1;
+        this.apostaService.aposta.premiacoes.push(this.premiacao);
         this.apostaService.adicionar();
 
         this.router.navigate(['aposta/pagamento']);
@@ -118,19 +118,44 @@ export class PremiacaoComponent implements OnInit {
   }
 
   isEnabled(id: number): void {
-    if (this.premiacao.nuDo > 0) {
-      this.premiosAO.forEach(p => {
-        if (p.id >= id) {
-          p.enabled = true;
-        } else {
-          p.enabled = false;
-        }
-      });
+    if(this.apostaService.aposta.tipo.abreviatura !== 'TD3'){
+      if (this.premiacao.nuDo > 0) {
+        this.premiosAO.forEach(p => {
+          if (p.id >= id) {
+            p.enabled = true;
+          } else {
+            p.enabled = false;
+          }
+        });
+      }
     }
   }
 
   isNotQuinaOuSena(): boolean {
     return !(this.apostaService.aposta.tipo.abreviatura === 'Q' || this.apostaService.aposta.tipo.abreviatura === 'S');
+  }
+
+  desabilitarParaTD13(): void {
+    if(this.apostaService.aposta.tipo.abreviatura === 'TD3'){
+      this.premiacao.nuDo = 1;
+      this.premiacao.nuAo = 3;
+      this.premiosDO.forEach(p => {
+        if (p.id !== 1) {
+          p.enabled = false;
+        } else {
+          p.enabled = true;
+        }
+      });
+
+      this.premiosAO.forEach(p => {
+        if (p.id !== 3) {
+          p.enabled = false;
+        } else {
+          p.enabled = true;
+        }
+      });
+
+    }
   }
 
 }

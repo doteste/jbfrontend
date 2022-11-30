@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private apostaService: ApostaService) { }
+    private apostaService: ApostaService) { 
+      if(this.authService.isLoggedIn) {
+        this.router.navigate(['aposta/extracoes']);
+      }
+    }
 
   ngOnInit(): void {
     this.authService.setLoggedIn(false);
@@ -39,6 +43,7 @@ export class LoginComponent implements OnInit {
       } 
       this.authService.login(credenciais).subscribe(res =>{
         this.apostaService.credenciais = credenciais;
+        this.apostaService.setUSuarioLogado(res);
         this.authService.setLoggedIn(true);
         this.router.navigate(['aposta/extracoes']);
       },

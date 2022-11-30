@@ -1,5 +1,5 @@
 import { ICredenciais } from './../../model/credenciais';
-import { UsuarioDTO } from './../../model/usuario.dto';
+import { UsuarioDTO } from '../../model/usuario.model';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EnviromentUtil } from '../../util/enviroment-util';
@@ -28,9 +28,10 @@ export class AuthService {
   constructor(private http: HttpClient,
     private router: Router) { }
 
-  login(credenciais: ICredenciais): Observable<string> {
+  login(credenciais: ICredenciais): Observable<UsuarioDTO> {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + window.btoa(credenciais.username + ":" + credenciais.password) });
-    return this.http.get<string>(`${this.endpoint}`, { headers, responseType: 'text' as 'json' });
+    const url = this.endpoint + credenciais.username;
+    return this.http.get<UsuarioDTO>(`${url}`, { headers, responseType: 'text' as 'json' });
   }
 
   logout() {                          

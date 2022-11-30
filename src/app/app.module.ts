@@ -1,5 +1,3 @@
-import { ExceptionInterceptor } from './interceptors/exception.interceptor';
-import { AuthService } from './componentes/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -38,6 +36,16 @@ import { LoginComponent } from './componentes/view/login/login.component';
 import { MessageService } from 'primeng/api';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { FocusDirective } from './directives/focus.directive';
+import { BilheteComponent } from './componentes/aposta/bilhete/bilhete.component';
+import { BilhetePagoComponent } from './componentes/aposta/bilhete-pago/bilhete-pago.component';
+import { PagamentoApostaComponent } from './componentes/aposta/pagamento-aposta/pagamento-aposta.component';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -50,7 +58,12 @@ import {MessageModule} from 'primeng/message';
     PremiacaoComponent,
     PagamentoComponent,
     SidenavComponent,
-    LoginComponent
+    LoginComponent,
+    UsuarioComponent,
+    FocusDirective,
+    BilheteComponent,
+    BilhetePagoComponent,
+    PagamentoApostaComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +91,11 @@ import {MessageModule} from 'primeng/message';
     MatListModule,
     HttpClientModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    NgxMaskModule.forRoot(maskConfig),
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false
+    })
   ],
   providers: [MessageService],
   

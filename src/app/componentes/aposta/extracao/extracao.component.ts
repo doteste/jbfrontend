@@ -35,6 +35,7 @@ export class ExtracaoComponent implements OnInit {
 
   proximo(extracao: Extracao) : void {
     this.apostaService.bilhete.extracao = extracao;
+    this.apostaService.bilhete.loginUsuario = this.apostaService.credenciais.username;
     this.extracaoService.setExtracaoIn(true);
     this.router.navigate(['aposta/tipo/${extracao.id}'])
   }

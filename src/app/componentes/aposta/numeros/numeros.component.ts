@@ -59,7 +59,7 @@ export class NumerosComponent implements OnInit {
       this.apostaService.aposta.numeros = this.listToNum(this.apostaService.aposta.tipo);
       this.apostaService.aposta.numerosList = this.numeros;
       this.apostaService.aposta.quantidade = this.quantidade;
-      this.router.navigate(['aposta/premiacao']);
+      this.router.navigate(['aposta/colocacao']);
     }
   }
 
@@ -102,7 +102,7 @@ export class NumerosComponent implements OnInit {
   add(event: any): void {
     const value = (event.target.value || '').trim();
     if (!this.validaNumero(value)) {
-      this.apostaService.showMessage('Número inválido!');
+      this.apostaService.showMessage('Palpite inválido inválido!');
     } else {
       if (value.length === this.maxlenght) {
         event.target.value = "";
@@ -123,7 +123,7 @@ export class NumerosComponent implements OnInit {
 
   addPalpite(): void {
     if (this.regraTipo.qtdMinAlgarismos > this.numero.length) {
-      this.apostaService.showMessage('Número inválido!');
+      this.apostaService.showMessage('Palpite inválido inválido!');
     }else{
       this.quantidade++;
         if(this.apostaService.aposta.tipo.flGrupo){
@@ -138,12 +138,12 @@ export class NumerosComponent implements OnInit {
 
   addIntervalo(event: any): void {
     const value = Number((event.target.value || '').trim());
-    if (this.numInicial === "" || this.numInicial.length < this.maxlenght) {
+    if (this.numInicial === "" || this.numInicial.length < this.regraTipo.qtdMinAlgarismos) {
       event.target.value = "";
       this.apostaService.showMessage('Informe o palpite inicial!');
     } else {
       if ((!this.validaNumero(this.numInicial))||(!this.validaNumero(this.numFinal))) {
-        this.apostaService.showMessage('Número inválido!');
+        this.apostaService.showMessage('Palpite inválido!');
       } else {
         let num = Number(this.numInicial);
 
@@ -155,6 +155,26 @@ export class NumerosComponent implements OnInit {
           this.numInicial = "";
           event.target.value = "";
         }
+      }
+    }
+  }
+
+  addBtnIntervalo(): void {
+    const value = Number((this.numFinal || '').trim());
+    if (this.numInicial === "" || (this.numInicial.length < this.regraTipo.qtdMinAlgarismos)) {
+      this.apostaService.showMessage('Palpite inicial inválido!');
+    } else {
+      if ((!this.validaNumero(this.numInicial))||(!this.validaNumero(this.numFinal))) {
+        this.apostaService.showMessage('Palpite inválido!');
+      } else {
+        let num = Number(this.numInicial);
+
+        for (num; num <= value; num++) {
+          this.numeros.push(String(num));
+          this.quantidade++;
+        }
+        this.numInicial = "";
+        this.numFinal = "";
       }
     }
   }
@@ -172,8 +192,14 @@ export class NumerosComponent implements OnInit {
   }
 
   validaNumero(numero: string): boolean {
-    if (this.maxlenght > 2 && numero.substring(1, 0) === "0") {
-      return false;
+    if(!this.isGrupo()) {  
+      const num = Number(numero);
+      if(this.regraTipo.valorMax > 0 && (this.regraTipo.valorMin > num || this.regraTipo.valorMax < num)){
+        return false;
+      }
+      if ((this.maxlenght > 2 && this.maxlenght <=4) && numero.substring(1, 0) === "0") {
+        return false;
+      }
     }
     return true;
   }

@@ -73,7 +73,7 @@
         </mat-form-field>
       </div>
 
-      <div style="margin-left: 15px;" [hidden]="isGrupo()">
+      <div style="margin-left: 5px;" [hidden]="isGrupo()">
         <mat-form-field>
           <mat-label>Até</mat-label>
           <input matInput placeholder="Até" #numeroInput [formControl]="numerosCtrl" [(ngModel)]="numFinal"
@@ -81,6 +81,13 @@
             (input)="addIntervalo($event)" maxlength="{{maxlenght}}"
             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
         </mat-form-field>
+      </div>
+      <div [hidden]="isGrupo()">
+        <span>
+          <a mat-icon-button (click)="addBtnIntervalo()">
+            <mat-icon>check_circle</mat-icon>
+          </a>
+        </span>
       </div>
     </div>
     <br>

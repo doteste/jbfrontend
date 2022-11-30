@@ -59,8 +59,8 @@
                         <table>
                             <ng-container>
                                 <td>
-                                    <tr *ngFor="let premio of aposta.premios" class="detalhe-premio premio">
-                                        <a>Premiação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
+                                    <tr *ngFor="let premio of aposta.premiacoes" class="detalhe-premio premio">
+                                        <a>Colocação {{premio.index}}: {{premio.nuDo}} ao {{premio.nuAo}} {{premio.valor
                                             | currency : 'BRL'}} {{premio.valorTotal | currency : 'BRL'}}</a>
                                     </tr>
                                 </td>
