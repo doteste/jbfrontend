@@ -25,6 +25,7 @@
     "ng2-currency-mask": "^13.0.3",
     "ngx-mask": "^14.2.3",
     "npm": "^8.19.2",
+    "pagseguro-api": "^1.0.6",
     "primeng": "^14.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

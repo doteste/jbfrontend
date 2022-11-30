@@ -41,6 +41,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { FocusDirective } from './directives/focus.directive';
 import { BilheteComponent } from './componentes/aposta/bilhete/bilhete.component';
 import { BilhetePagoComponent } from './componentes/aposta/bilhete-pago/bilhete-pago.component';
+import { PagamentoApostaComponent } from './componentes/aposta/pagamento-aposta/pagamento-aposta.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -61,7 +62,8 @@ const maskConfig: Partial<IConfig> = {
     UsuarioComponent,
     FocusDirective,
     BilheteComponent,
-    BilhetePagoComponent
+    BilhetePagoComponent,
+    PagamentoApostaComponent,
   ],
   imports: [
     BrowserModule,

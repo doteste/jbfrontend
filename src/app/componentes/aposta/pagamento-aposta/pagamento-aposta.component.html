@@ -1,0 +1,135 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <mat-card fxShow="true" fxHide.lt-md>
+        <mat-card-title>Dados do Cartão</mat-card-title>
+    </mat-card>
+    <mat-card fxShow="true" fxHide.gt-sm>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span>
+                <a mat-icon-button (click)="cancelar()">
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </a>
+            </span>
+            <span>
+                <a>Dados do Cartão</a>
+            </span>
+            <span class="spacer"></span>
+            <a mat-icon-button (click)="confirmar()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </a>
+        </div>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="start end" fxShow="true" fxHide.lt-md>
+        <button mat-stroked-button (click)="cancelar()">
+            Cancelar
+        </button>
+        <span class="spacer"></span>
+        <button mat-stroked-button (click)="confirmar()" class="button-1 button-2">
+            Finalizar
+        </button>
+    </div>
+
+    <div style="margin-top: 30px;" fxShow="true" fxHide.lt-md>
+
+        <div>
+            <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;">
+                <mat-button-toggle-group [(ngModel)]="tipoSelecionado" aria-label="Font Style">
+                    <mat-button-toggle value="CREDIT_CARD">Crédito</mat-button-toggle>
+                    <mat-button-toggle value="DEBIT_CARD">Débito</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <br>
+            <div fxLayout="row wrap" fxLayoutAlign="center center">
+                <div class="user_card">
+                    <span fxShow="true" fxHide.lt-md>
+                        <a routerLink="aposta/extracoes">
+                            <img class="logo" src="assets/img/pagseguro.png" alt="logo">
+                        </a>
+                    </span>
+                    <div fxLayout="row wrap" fxLayoutAlign="center center">
+                        <div fxLayout="row wrap" fxLayoutAlign="start start" class="card">
+                            <mat-form-field class="full-width">
+                                <input class="inputNome" matInput placeholder="Número" [(ngModel)]="cartao.number"
+                                    name="numero" class="edit" [dropSpecialCharacters]="true"
+                                    mask="0000 0000 0000 0000">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="full-width">
+                                <input class="inputNome" matInput placeholder="Nome" [(ngModel)]="cartao.holder.name"
+                                    name="nome" class="edit">
+                            </mat-form-field>
+                            <mat-form-field class="mes-width">
+                                <input class="inputMesAno" matInput placeholder="Mês/Ano" [(ngModel)]="mesAno"
+                                    name="mes" class="edit" mask="00/0000">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="code-width">
+                                <input class="inputMesAno" matInput placeholder="Código"
+                                    [(ngModel)]="cartao.security_code" name="codigo" class="edit"
+                                    [dropSpecialCharacters]="true" mask="000">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+    <div style="margin-top: 30px;" fxShow="true" fxHide.gt-sm>
+
+        <div>
+            <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;">
+                <mat-button-toggle-group [(ngModel)]="tipoSelecionado" aria-label="Font Style">
+                    <mat-button-toggle value="CREDIT_CARD">Crédito</mat-button-toggle>
+                    <mat-button-toggle value="DEBIT_CARD">Débito</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <br>
+            <div fxLayout="row wrap" fxLayoutAlign="center center">
+                <div class="user_card_mobile">
+                    <span>
+                        <a routerLink="aposta/extracoes">
+                            <img class="logo" src="assets/img/pagseguro.png" alt="logo">
+                        </a>
+                    </span>
+                    <div fxLayout="row wrap" fxLayoutAlign="center center">
+                        <div fxLayout="row wrap" fxLayoutAlign="start start" class="card">
+                            <mat-form-field class="full-width">
+                                <input class="inputNome" matInput placeholder="Número" [(ngModel)]="cartao.number"
+                                    name="numero" class="edit" [dropSpecialCharacters]="true"
+                                    mask="0000 0000 0000 0000">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="full-width">
+                                <input class="inputNome" matInput placeholder="Nome" [(ngModel)]="cartao.holder.name"
+                                    name="nome" class="edit">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input class="inputMesAno" matInput placeholder="Mês/Ano" [(ngModel)]="mesAno"
+                                    name="mes" class="edit" mask="00/0000">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="full-width">
+                                <input class="inputCode" matInput placeholder="Código"
+                                    [(ngModel)]="cartao.security_code" name="codigo" class="edit"
+                                    [dropSpecialCharacters]="true" mask="000">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+
+</div>
