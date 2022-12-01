@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagamentoApostaComponent implements OnInit {
 
+  loading = false;
   cartao: Cartao = new Cartao();
   tipoSelecionado!: string;
   mesAno!: string;
@@ -48,15 +49,17 @@ export class PagamentoApostaComponent implements OnInit {
       this.metodoPagamento.installments = 1;
       this.pagamento.metodoPagamento = this.metodoPagamento;
       this.pagamento.bilheteDTO = this.apostaService.bilhete;
-  
+      this.loading = true;
       this.pagamentoService.efetuarPagamento(this.pagamento).subscribe(res => {
         this.pagamentoResponse = res;
         if(this.pagamentoResponse.charges[0].status === "PAID") {
           this.bilheteService.salvar().subscribe(res1 => {
             this.apostaService.bilheteSalvo = res1;
             this.router.navigate(['/aposta/comprovante']);
+            this.loading = false;
           },
           error => {
+            this.loading = false;
             const errorMessage = error.message;
             this.apostaService.showMessage(errorMessage);
           });

@@ -1,3 +1,4 @@
+import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -92,6 +93,7 @@ const maskConfig: Partial<IConfig> = {
     HttpClientModule,
     MessagesModule,
     MessageModule,
+    NgxLoadingModule.forRoot({}),
     NgxMaskModule.forRoot(maskConfig),
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false

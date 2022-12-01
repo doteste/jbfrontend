@@ -1,5 +1,4 @@
 import { PagamentoApostaComponent } from './componentes/aposta/pagamento-aposta/pagamento-aposta.component';
-import { PagamentoPagSeguro } from './model/pagamentopagseguro';
 import { BilhetePagoComponent } from './componentes/aposta/bilhete-pago/bilhete-pago.component';
 import { BilheteComponent } from './componentes/aposta/bilhete/bilhete.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';

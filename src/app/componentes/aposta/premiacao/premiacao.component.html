@@ -97,7 +97,7 @@
             <a class="texto">Valor da aposta</a>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="center center">     
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <input matInput currencyMask placeholder="R$" [formControl]="formCtrl" [(ngModel)]="premiacao.valor" name="valor" class="edit"
                     [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', precision: 2 }">
             </mat-form-field>
