@@ -42,6 +42,8 @@ import { FocusDirective } from './directives/focus.directive';
 import { BilheteComponent } from './componentes/aposta/bilhete/bilhete.component';
 import { BilhetePagoComponent } from './componentes/aposta/bilhete-pago/bilhete-pago.component';
 import { PagamentoApostaComponent } from './componentes/aposta/pagamento-aposta/pagamento-aposta.component';
+import { PagamentoPixComponent } from './componentes/aposta/pagamento-pix/pagamento-pix.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -64,6 +66,7 @@ const maskConfig: Partial<IConfig> = {
     BilheteComponent,
     BilhetePagoComponent,
     PagamentoApostaComponent,
+    PagamentoPixComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,8 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false
-    })
+    }),
+    ClipboardModule
   ],
   providers: [MessageService],
   

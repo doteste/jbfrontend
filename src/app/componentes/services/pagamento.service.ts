@@ -1,3 +1,4 @@
+import { PixResponse } from './../../model/pixresponse.model';
 import { PagamentoPagSeguro } from './../../model/pagamentopagseguro';
 import { PagamentoResponse } from './../../model/pagamentoresponse';
 import { Bilhete } from './../../model/bilhete.model';
@@ -30,6 +31,12 @@ export class PagamentoService {
     const url = `${this.endpoint}efetuarPagamento`;
     const headers = new HttpHeaders({ Authorization: 'Basic ' + window.btoa(this.apostaService.credenciais.username + ":" + this.apostaService.credenciais.password) })
     return this.http.post<PagamentoResponse>(url, pagamento, {headers})
+  }
+
+  getPixPagamento() : Observable<PixResponse> {
+    const url = `${this.endpoint}get-pix-pagamento`;
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + window.btoa(this.apostaService.credenciais.username + ":" + this.apostaService.credenciais.password) })
+    return this.http.post<PixResponse>(url, this.apostaService.bilhete, {headers})
   }
 
 }

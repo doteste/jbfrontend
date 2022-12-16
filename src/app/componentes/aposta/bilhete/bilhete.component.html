@@ -30,6 +30,11 @@
             <ng-container matColumnDef="descricao">
                 <td mat-cell *matCellDef="let bilhete">
                     <div id="container">
+						<div class="row linha">
+                            <div class="column-3 column label2 coluna2">
+                                <label>AUT:{{bilhete.autenticacao}}</label>
+                            </div>
+                        </div>
                         <div class="row linha">
                             <div class="column-3 column label coluna2 ">
                                 <label>Banca online</label>
@@ -90,6 +95,11 @@
 							<ng-container matColumnDef="descricao">
 								<td mat-cell *matCellDef="let bilhete">
 									<div id="container">
+										<div class="row linha">
+											<div class="column-3 column label coluna">
+												<label>AUT:{{bilhete.autenticacao}}</label>
+											</div>
+										</div>
 										<div class="row linha">
 											<div class="column-3 column label coluna ">
 												<label>Banca online</label>

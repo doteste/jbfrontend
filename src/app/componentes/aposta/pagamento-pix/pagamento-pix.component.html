@@ -1,0 +1,52 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <mat-card fxShow="true" fxHide.lt-md>
+        <mat-card-title>Pagamento por PIX</mat-card-title>
+    </mat-card>
+
+    <mat-card fxShow="true" fxHide.gt-sm>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span>
+                <a mat-icon-button (click)="voltar()">
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </a>
+            </span>
+            <span>
+                <a>Pagamento por PIX</a>
+            </span>
+            <span class="spacer"></span>
+            <a mat-icon-button (click)="finalizar()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </a>
+        </div>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="start end" fxShow="true" fxHide.lt-md>
+        <button mat-stroked-button (click)="voltar()" class="button-4">
+            Voltar
+        </button>
+        <span class="spacer"></span>
+        <button mat-stroked-button (click)="finalizar()" class="button-3 button-4">
+            Gerar bilhete
+        </button>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;">   
+        <br>
+        <div fxLayout="row wrap" fxLayoutAlign="center center">   
+            <span fxShow="true"> 
+                <a>
+                    <img class="pix" src={{urlPix}} alt="pixpng">
+                </a>
+            </span>
+        </div>
+        
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">   
+        <button mat-raised-button color="accent" [cdkCopyToClipboard]="chavePix" class="button-1 button-2">Copiar chave PIX</button>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <a class="texto">Você pode pagar com Pix no app ou site do seu banco. A aprovação do pagamento é imediata.</a>
+    </div>
+
+</div>

@@ -4,10 +4,11 @@ import { Aposta } from "./aposta.model";
 
 export class Bilhete {
     id: any;
-    numero: String = '';
+    numero: string = '';
     dhAposta: Date = new Date();
     extracao!: Extracao;
     apostas: Aposta[] = [];
     valorTotal: Number = 0;
-    loginUsuario: String ='';
+    loginUsuario: string ='';
+    autenticacao!: string;
 }

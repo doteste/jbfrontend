@@ -27,11 +27,6 @@ button {
     margin-left: 10px;
 }
 
-mat-form-field {
-  margin-left: 15px;
-  width: 80px;
-}
-
 .extra-card {
   text-align: center;
   margin-right: 5px;
@@ -54,4 +49,8 @@ mat-button-toggle-group {
 .edit {
   color: white;
   font-size: 1.2rem;
+}
+
+.full-width {
+  width: 200px;
 }

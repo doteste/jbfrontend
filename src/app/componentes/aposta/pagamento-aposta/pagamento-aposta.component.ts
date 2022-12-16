@@ -7,6 +7,7 @@ import { PagamentoService } from './../../services/pagamento.service';
 import { Router } from '@angular/router';
 import { Cartao } from './../../../model/cartao';
 import { Component, OnInit } from '@angular/core';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-pagamento-aposta',
@@ -41,17 +42,12 @@ export class PagamentoApostaComponent implements OnInit {
 
   confirmar():void {
     if(this.validaCampos()) {
-      this.cartao.exp_year = this.mesAno.substring(3,8);
-      this.cartao.exp_month = this.mesAno.substring(0,2)
-      this.metodoPagamento.card = this.cartao;
-      this.metodoPagamento.type = this.tipoSelecionado;
-      this.metodoPagamento.installments = 1;
-      this.pagamento.metodoPagamento = this.metodoPagamento;
-      this.pagamento.bilheteDTO = this.apostaService.bilhete;
+      this.getPagamento();
   
       this.pagamentoService.efetuarPagamento(this.pagamento).subscribe(res => {
         this.pagamentoResponse = res;
         if(this.pagamentoResponse.charges[0].status === "PAID") {
+          this.apostaService.bilhete.autenticacao = this.getAutenticacao(this.pagamentoResponse.charges[0].id);
           this.bilheteService.salvar().subscribe(res1 => {
             this.apostaService.bilheteSalvo = res1;
             this.router.navigate(['/aposta/comprovante']);
@@ -68,6 +64,16 @@ export class PagamentoApostaComponent implements OnInit {
 
   }
 
+  getPagamento(): void {
+    this.cartao.exp_year = this.mesAno.substring(3,8);
+    this.cartao.exp_month = this.mesAno.substring(0,2)
+    this.metodoPagamento.card = this.cartao;
+    this.metodoPagamento.type = this.tipoSelecionado;
+    this.metodoPagamento.installments = 1;
+    this.pagamento.metodoPagamento = this.metodoPagamento;
+    this.pagamento.bilheteDTO = this.apostaService.bilhete;
+  }
+
   validaCampos(): boolean {
     if (this.mesAno === undefined 
       || this.tipoSelecionado === undefined
@@ -77,6 +83,15 @@ export class PagamentoApostaComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  pagamentoPIX(): void {
+    this.router.navigate(['aposta/pagamento/pix']);
+  }
+
+  getAutenticacao(autenticacao: string): string {
+    var re = /-/gi; 
+    return autenticacao.substring(5).replace(re,"");
   }
 
 }
