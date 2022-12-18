@@ -7,7 +7,6 @@ import { PagamentoService } from './../../services/pagamento.service';
 import { Router } from '@angular/router';
 import { Cartao } from './../../../model/cartao';
 import { Component, OnInit } from '@angular/core';
-import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-pagamento-aposta',
@@ -16,6 +15,7 @@ import { EMPTY } from 'rxjs';
 })
 export class PagamentoApostaComponent implements OnInit {
 
+  loading = false;
   cartao: Cartao = new Cartao();
   tipoSelecionado!: string;
   mesAno!: string;
@@ -43,7 +43,7 @@ export class PagamentoApostaComponent implements OnInit {
   confirmar():void {
     if(this.validaCampos()) {
       this.getPagamento();
-  
+      this.loading = true;
       this.pagamentoService.efetuarPagamento(this.pagamento).subscribe(res => {
         this.pagamentoResponse = res;
         if(this.pagamentoResponse.charges[0].status === "PAID") {
@@ -51,6 +51,7 @@ export class PagamentoApostaComponent implements OnInit {
           this.bilheteService.salvar().subscribe(res1 => {
             this.apostaService.bilheteSalvo = res1;
             this.router.navigate(['/aposta/comprovante']);
+            this.loading = false;
           });
         }else{
           this.apostaService.showMessage('Pagamento não foi aprovado!');

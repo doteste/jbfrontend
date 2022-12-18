@@ -23,6 +23,7 @@
     "angular-input-masks": "^4.4.1",
     "materialize-css": "^1.0.0-rc.2",
     "ng2-currency-mask": "^13.0.3",
+    "ngx-loading": "^14.0.0",
     "ngx-mask": "^14.2.3",
     "npm": "^8.19.2",
     "pagseguro-api": "^1.0.6",

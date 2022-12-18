@@ -1,7 +1,6 @@
 import { PixResponse } from './../../model/pixresponse.model';
 import { PagamentoPagSeguro } from './../../model/pagamentopagseguro';
 import { PagamentoResponse } from './../../model/pagamentoresponse';
-import { Bilhete } from './../../model/bilhete.model';
 import { Observable } from 'rxjs';
 import { ApostaService } from './aposta.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

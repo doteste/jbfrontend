@@ -13,6 +13,7 @@ import { QrCode } from 'src/app/model/qrcode.model';
 })
 export class PagamentoPixComponent implements OnInit {
 
+  loading = false;
   pixResponse : PixResponse = new PixResponse();
   urlPix! : string;
   chavePix!: string;
@@ -25,10 +26,12 @@ export class PagamentoPixComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.pagamentoService.getPixPagamento().subscribe(res => {
       this.pixResponse = res;
       this.urlPix = this.pixResponse.qr_codes[0].links.filter(link => link.rel == 'QRCODE.PNG')[0].href;
       this.chavePix = this.pixResponse.qr_codes[0].text;
+      this.loading = false;
     })
   }
 
