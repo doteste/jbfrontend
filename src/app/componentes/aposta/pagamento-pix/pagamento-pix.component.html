@@ -30,7 +30,12 @@
         </button>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;">   
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <a class="textoGrande">Quase lá! Finalize seu pagamento com PIX</a>
+    </div>
+    
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 5px 10% 0 10%;" fxShow="true" fxHide.lt-md>   
         <br>
         <div fxLayout="row wrap" fxLayoutAlign="center center">   
             <span fxShow="true"> 
@@ -41,8 +46,24 @@
         </div>
         
     </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" name="" class="input_valor" value="Valor: {{getTotalGeral() | currency : 'BRL'}}" placeholder="Chave" disabled="true">
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" name="" class="input_chave" value="{{chavePix}}" placeholder="Chave" disabled="true">
+    </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center">   
-        <button mat-raised-button color="accent" [cdkCopyToClipboard]="chavePix" class="button-1 button-2">Copiar chave PIX</button>
+        <button mat-raised-button color="accent" [cdkCopyToClipboard]="chavePix" class="button-1 button-2">Copiar código PIX</button>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <a class="texto">Após gerado, o código PIX é válido por até 24 horas.</a>
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="center center">

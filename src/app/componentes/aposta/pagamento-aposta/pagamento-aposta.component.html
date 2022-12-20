@@ -1,6 +1,7 @@
 <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
     <mat-card fxShow="true" fxHide.lt-md>
         <mat-card-title>Dados do Cartão</mat-card-title>
+        <mat-card-subtitle class="numeros">Valor: {{getTotalGeral() | currency : 'BRL'}}</mat-card-subtitle>
     </mat-card>
     <mat-card fxShow="true" fxHide.gt-sm>
         <div fxLayout="row wrap" fxLayoutAlign="start center">
@@ -28,6 +29,14 @@
             Finalizar
         </button>
     </div>
+
+    <span fxShow="true" fxHide.gt-sm class="bilhete">
+        <div class="label-bilhete">
+          <p>
+            Valor: {{getTotalGeral() | currency : 'BRL'}}
+          </p>
+        </div>
+      </span>
 
     <div style="margin-top: 30px;" fxShow="true" fxHide.lt-md>
 

@@ -21,12 +21,13 @@
 }
 
 .pix {
-    margin-top: 50px;
+    margin-top: 40px;
     width: 300px;
     height: 300px;
 }
 
 .texto {
+    margin-top: 30px;
     color: aliceblue;
     font-size: 1rem;
     padding: 50 50 50 50;
@@ -35,3 +36,36 @@
     text-align: justify;
     align-items: flex-start;
 }
+
+.textoGrande {
+    margin-top: 40px;
+    color: aliceblue;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    padding: 50 50 50 50;
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.input_chave {
+    text-align: center;
+    margin-top: 20px;
+    font-size: medium;
+    height: 30px;
+    width: 200px;
+    box-shadow: none;
+    outline: 0px;
+}
+
+.input_valor {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: medium;
+    height: 30px;
+    width: 200px;
+    box-shadow: none;
+    outline: 0px;
+}
+

@@ -95,4 +95,14 @@ export class PagamentoApostaComponent implements OnInit {
     return autenticacao.substring(5).replace(re,"");
   }
 
+  getTotalGeral() :number {
+    let totalGeral = 0;
+    this.apostaService.bilhete.apostas.forEach(aposta => {
+      aposta.premiacoes.forEach(premio => {
+        totalGeral += premio.valorTotal;
+      });
+    });
+    return totalGeral;
+  }
+
 }
