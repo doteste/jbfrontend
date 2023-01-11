@@ -7,4 +7,6 @@ export class UsuarioDTO {
     telefone: string="";
     login: string ="";
     senha: string ="";
+    error: Boolean = false;
+    messageError: string = "";
 }

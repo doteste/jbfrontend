@@ -54,8 +54,12 @@ export class UsuarioComponent implements OnInit {
       } else {
         this.setUsuario();
         this.usuarioService.salvar(this.usuario).subscribe(res => {
-          this.apostaService.showMessage('Usuário salvo com sucesso!');
-          this.router.navigate(['']);
+          if(res.error) {
+            this.apostaService.showMessage(res.messageError);
+          }else{
+            this.apostaService.showMessage('Usuário salvo com sucesso!');
+            this.router.navigate(['']);
+          }
         },
         error => {
           const errorMessage = error.message;
